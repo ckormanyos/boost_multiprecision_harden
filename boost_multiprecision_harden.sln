@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_multiprecision_harden", "boost_multiprecision_harden.vcxproj", "{B0D51CE3-F84E-4E3C-9543-42B54143E139}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C3A05412-05CC-4498-A14E-AB89088D7FD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{93458E64-A3D9-437F-A25B-AF27280B9C32}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\boost_multiprecision_harden.yml = .github\workflows\boost_multiprecision_harden.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+		Test_GCC|x64 = Test_GCC|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0D51CE3-F84E-4E3C-9543-42B54143E139}.Debug|x64.ActiveCfg = Debug|x64
+		{B0D51CE3-F84E-4E3C-9543-42B54143E139}.Debug|x64.Build.0 = Debug|x64
+		{B0D51CE3-F84E-4E3C-9543-42B54143E139}.Release|x64.ActiveCfg = Release|x64
+		{B0D51CE3-F84E-4E3C-9543-42B54143E139}.Release|x64.Build.0 = Release|x64
+		{B0D51CE3-F84E-4E3C-9543-42B54143E139}.Test_GCC|x64.ActiveCfg = Test_GCC|x64
+		{B0D51CE3-F84E-4E3C-9543-42B54143E139}.Test_GCC|x64.Build.0 = Test_GCC|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{93458E64-A3D9-437F-A25B-AF27280B9C32} = {C3A05412-05CC-4498-A14E-AB89088D7FD4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01796EB2-69B9-414F-BD58-5A429AE5D86E}
+	EndGlobalSection
+	GlobalSection(RationalClearCase) = preSolution
+		SourceControlProvider = RationalClearCase
+	EndGlobalSection
+EndGlobal

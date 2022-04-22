@@ -1,0 +1,45 @@
+# ------------------------------------------------------------------------------
+#  Copyright Christopher Kormanyos 2022.
+#  Distributed under the Boost Software License,
+#  Version 1.0. (See accompanying file LICENSE_1_0.txt
+#  or copy at http://www.boost.org/LICENSE_1_0.txt)
+# ------------------------------------------------------------------------------
+
+name: boost_multiprecision_harden
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+jobs:
+  gcc-clang-native:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [ c++11, c++14, c++17, c++2a ]
+        compiler: [ g++, clang++ ]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: clone-submods-bootstrap-headers-boost-develop
+        run: |
+          git clone -b develop --depth 1 https://github.com/boostorg/boost.git ../boost-root
+          cd ../boost-root
+          git submodule update --init tools
+          git submodule update --init libs/config
+          git submodule update --init libs/math
+          git submodule update --init libs/multiprecision
+          ./bootstrap.sh
+          ./b2 headers
+      - name: gcc-clang-native
+        run: |
+          echo "compile ./standalone_bernoulli_tgamma.exe"
+          ${{ matrix.compiler }} -v
+          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -std=${{ matrix.standard }} -I../boost-root standalone_bernoulli_tgamma.cpp -o standalone_bernoulli_tgamma.exe
+          ls -la ./standalone_bernoulli_tgamma.exe
+          ./standalone_bernoulli_tgamma.exe
