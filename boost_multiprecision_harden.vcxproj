@@ -17,6 +17,91 @@
   <ItemGroup>
     <ClCompile Include="standalone_bernoulli_tgamma.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="boost\multiprecision\complex128.hpp" />
+    <ClInclude Include="boost\multiprecision\complex_adaptor.hpp" />
+    <ClInclude Include="boost\multiprecision\concepts\mp_number_archetypes.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_bin_float.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_bin_float\io.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_bin_float\transcendental.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_complex.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_dec_float.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\add.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\add_unsigned.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\bitwise.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\checked.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\comparison.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\cpp_int_config.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\divide.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\import_export.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\intel_intrinsics.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\limits.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\literals.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\misc.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\multiply.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\serialize.hpp" />
+    <ClInclude Include="boost\multiprecision\cpp_int\value_pack.hpp" />
+    <ClInclude Include="boost\multiprecision\debug_adaptor.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\assert.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\atomic.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\bitscan.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\constexpr.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\default_ops.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\digits.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\dynamic_array.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\empty_value.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\endian.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\et_ops.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\float128_functions.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\float_string_cvt.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\fpclassify.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\functions\constants.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\functions\pow.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\functions\trig.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\functions\trunc.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\generic_interconvert.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\hash.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\integer_ops.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\itos.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\min_max.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\no_et_ops.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\no_exceptions_support.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\number_base.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\number_compare.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\precision.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\rebind.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\standalone_config.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\static_array.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\tables.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\ublas_interop.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\uniform_int_distribution.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\utype_helper.hpp" />
+    <ClInclude Include="boost\multiprecision\eigen.hpp" />
+    <ClInclude Include="boost\multiprecision\float128.hpp" />
+    <ClInclude Include="boost\multiprecision\gmp.hpp" />
+    <ClInclude Include="boost\multiprecision\integer.hpp" />
+    <ClInclude Include="boost\multiprecision\logged_adaptor.hpp" />
+    <ClInclude Include="boost\multiprecision\miller_rabin.hpp" />
+    <ClInclude Include="boost\multiprecision\mpc.hpp" />
+    <ClInclude Include="boost\multiprecision\mpfi.hpp" />
+    <ClInclude Include="boost\multiprecision\mpfr.hpp" />
+    <ClInclude Include="boost\multiprecision\number.hpp" />
+    <ClInclude Include="boost\multiprecision\random.hpp" />
+    <ClInclude Include="boost\multiprecision\rational_adaptor.hpp" />
+    <ClInclude Include="boost\multiprecision\tommath.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\explicit_conversion.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\extract_exponent_type.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\is_backend.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\is_byte_container.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\is_complex.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\is_convertible_arithmetic.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\is_restricted_conversion.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\is_variable_precision.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\max_digits10.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\std_integer_traits.hpp" />
+    <ClInclude Include="boost\multiprecision\traits\transcendental_reduction_type.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B0D51CE3-F84E-4E3C-9543-42B54143E139}</ProjectGuid>
     <RootNamespace>Test</RootNamespace>
@@ -70,10 +155,10 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\boost\modular_boost\boost\libs\multiprecision\include;C:\boost\modular_boost\boost\libs\math\include;C:\boost\modular_boost\boost\libs\config\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\boost\modular_boost\boost\libs\multiprecision\include;C:\boost\modular_boost\boost\libs\math\include;C:\boost\modular_boost\boost\libs\config\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test_GCC|x64'">
     <NMakeBuildCommandLine>D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe</NMakeBuildCommandLine>

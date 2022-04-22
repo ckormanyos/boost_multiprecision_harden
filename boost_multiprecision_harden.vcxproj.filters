@@ -4,10 +4,285 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\boost">
+      <UniqueIdentifier>{acc4d2e0-3615-4414-8c6a-e7e685b79b80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\boost\multiprecision">
+      <UniqueIdentifier>{5026aef5-d08e-4b59-a9b0-ddc84425ddf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\boost\multiprecision\traits">
+      <UniqueIdentifier>{aea8e650-7a09-4f5c-80e5-6205d23624f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\boost\multiprecision\detail">
+      <UniqueIdentifier>{7ca29bfc-de70-4958-bbf8-d947470cba8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\boost\multiprecision\concepts">
+      <UniqueIdentifier>{bc209d12-6f05-4523-a6a4-08c3df541dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\boost\multiprecision\cpp_int">
+      <UniqueIdentifier>{234cdf33-6bba-4c8b-b45a-1c24c80d27ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\boost\multiprecision\cpp_bin_float">
+      <UniqueIdentifier>{243a46ed-aa14-45b0-85d2-61a0723c3bb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\boost\multiprecision\detail\functions">
+      <UniqueIdentifier>{40f989ee-5b5f-4cff-97b8-62e12b666e5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="standalone_bernoulli_tgamma.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="boost\multiprecision\complex_adaptor.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\complex128.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_bin_float.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_complex.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_dec_float.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\debug_adaptor.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\eigen.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\float128.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\gmp.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\integer.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\logged_adaptor.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\miller_rabin.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\mpc.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\mpfi.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\mpfr.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\number.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\random.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\rational_adaptor.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\tommath.hpp">
+      <Filter>Source Files\boost\multiprecision</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\concepts\mp_number_archetypes.hpp">
+      <Filter>Source Files\boost\multiprecision\concepts</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_bin_float\io.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_bin_float</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_bin_float\transcendental.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_bin_float</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\cpp_int_config.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\divide.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\import_export.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\intel_intrinsics.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\limits.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\literals.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\misc.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\multiply.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\serialize.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\value_pack.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\add.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\add_unsigned.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\bitwise.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\checked.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\cpp_int\comparison.hpp">
+      <Filter>Source Files\boost\multiprecision\cpp_int</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\functions\trig.hpp">
+      <Filter>Source Files\boost\multiprecision\detail\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\functions\trunc.hpp">
+      <Filter>Source Files\boost\multiprecision\detail\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\functions\constants.hpp">
+      <Filter>Source Files\boost\multiprecision\detail\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\functions\pow.hpp">
+      <Filter>Source Files\boost\multiprecision\detail\functions</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\endian.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\et_ops.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\float_string_cvt.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\float128_functions.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\fpclassify.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\generic_interconvert.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\hash.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\integer_ops.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\itos.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\min_max.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\no_et_ops.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\no_exceptions_support.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\number_base.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\number_compare.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\precision.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\rebind.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\standalone_config.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\static_array.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\tables.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\ublas_interop.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\uniform_int_distribution.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\utype_helper.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\assert.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\atomic.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\bitscan.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\constexpr.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\default_ops.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\digits.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\dynamic_array.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\empty_value.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\is_variable_precision.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\max_digits10.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\std_integer_traits.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\transcendental_reduction_type.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\explicit_conversion.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\extract_exponent_type.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\is_backend.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\is_byte_container.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\is_complex.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\is_convertible_arithmetic.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="boost\multiprecision\traits\is_restricted_conversion.hpp">
+      <Filter>Source Files\boost\multiprecision\traits</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
