@@ -2067,7 +2067,7 @@ public:
       else
       {
          result.assign(Bits / 3 + 1, '0');
-         std::string::difference_type pos = result.size() - 1;
+         std::string::difference_type pos = static_cast<std::string::difference_type>(result.size() - 1u);
          cpp_int_backend              t(*this);
          cpp_int_backend              r;
          bool                         neg = false;
