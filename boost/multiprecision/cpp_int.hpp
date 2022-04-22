@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////
 //  Copyright 2012 - 2022 John Maddock.
 //  Copyright 2022 Christopher Kormanyos.
 //  Distributed under the Boost Software License,
@@ -1945,14 +1945,15 @@ public:
          limb_type                           mask  = static_cast<limb_type>((1u << shift) - 1);
          typename base_type::local_limb_type v     = *this->limbs();
          result.assign(Bits / shift + (Bits % shift ? 1 : 0), '0');
-         std::string::difference_type pos      = result.size() - 1;
+         std::string::difference_type pos      = result.size() - 1u;
          char                         letter_a = f & std::ios_base::uppercase ? 'A' : 'a';
          for (std::size_t i = 0; i < Bits / shift; ++i)
          {
             char c = '0' + static_cast<char>(v & mask);
             if (c > '9')
                c += letter_a - '9' - 1;
-            result[pos--] = c;
+            result[static_cast<std::size_t>(pos)] = c;
+            --pos;
             v >>= shift;
          }
          if (Bits % shift)
