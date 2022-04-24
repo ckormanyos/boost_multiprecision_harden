@@ -946,7 +946,7 @@ inline void eval_subtract(gmp_float<digits10>& result, long i)
 
    if (i > 0)
       mpf_sub_ui(result.data(), result.data(), static_cast<local_uint_type>(i));
-   else if (i < 0)
+   else
       mpf_add_ui(result.data(), result.data(), static_cast<local_uint_type>(-i));
 }
 template <unsigned digits10>
@@ -1803,7 +1803,7 @@ inline void eval_add(gmp_int& t, long i)
 
    if (i > 0)
       mpz_add_ui(t.data(), t.data(), static_cast<local_uint_type>(i));
-   else if (i < 0)
+   else
       mpz_sub_ui(t.data(), t.data(), static_cast<local_uint_type>(-i));
 }
 inline void eval_multiply_add(gmp_int& t, const gmp_int& a, long i)
@@ -1830,7 +1830,7 @@ inline void eval_subtract(gmp_int& t, long i)
 
    if (i > 0)
       mpz_sub_ui(t.data(), t.data(), static_cast<local_uint_type>(i));
-   else if (i < 0)
+   else
       mpz_add_ui(t.data(), t.data(), static_cast<local_uint_type>(-i));
 }
 inline void eval_multiply(gmp_int& t, long i)
