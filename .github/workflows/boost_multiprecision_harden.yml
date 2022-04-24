@@ -1,4 +1,4 @@
-# ------------------------------------------------------------------------------
+﻿# ------------------------------------------------------------------------------
 #  Copyright Christopher Kormanyos 2022.
 #  Distributed under the Boost Software License,
 #  Version 1.0. (See accompanying file LICENSE_1_0.txt
@@ -58,8 +58,8 @@ jobs:
           fetch-depth: '0'
       - name: install GMP
         run: |
-          apt-get update --quiet
-          apt-get install --no-install-recommends --quiet --yes libgmp-dev
+          sudo apt-get update --quiet
+          sudo apt-get install --no-install-recommends --quiet --yes libgmp-dev
       - name: clone-submods-bootstrap-headers-boost-develop
         run: |
           git clone -b develop --depth 1 https://github.com/boostorg/boost.git ../boost-root
