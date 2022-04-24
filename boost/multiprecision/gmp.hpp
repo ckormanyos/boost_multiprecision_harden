@@ -25,6 +25,7 @@
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
+#include <iomanip>
 #include <limits>
 #include <memory>
 #include <type_traits>
@@ -1171,7 +1172,7 @@ inline void eval_convert_to(long double* result, const gmp_float<digits10>& val)
          ++exp;
       }
 
-      temp_string.insert(exp, 1, '.');
+      temp_string.insert(static_cast<std::size_t>(exp), static_cast<std::size_t>(1u), '.');
    }
 
    *result = std::strtold(temp_string.c_str(), nullptr);
@@ -1316,10 +1317,10 @@ inline void eval_frexp(gmp_float<Digits10>& result, const gmp_float<Digits10>& v
    mpir_si v;
    mpf_get_d_2exp(&v, val.data());
 #else
-   long                             v;
+   long v;
    mpf_get_d_2exp(&v, val.data());
 #endif
-   *e = v;
+   *e = static_cast<int>(v);
    eval_ldexp(result, val, -v);
 }
 template <unsigned Digits10>
@@ -2544,7 +2545,7 @@ struct gmp_rational
 
       constexpr const int shift = std::numeric_limits<int>::digits - 1;
 
-      while (f)
+      while (f != static_cast<F>(0.0f))
       {
          // extract int sized bits from f:
          f    = ldexp(f, shift);
@@ -3306,7 +3307,9 @@ inline T min_value();
 
 inline void set_output_precision(const boost::multiprecision::mpf_float& val, std::ostream& os)
 {
-   os << std::setprecision(val.precision());
+   const std::streamsize sz_prec = static_cast<std::streamsize>(val.precision());
+
+   os << std::setprecision(sz_prec);
 }
 
 template <>
