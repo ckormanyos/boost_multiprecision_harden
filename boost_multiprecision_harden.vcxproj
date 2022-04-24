@@ -158,12 +158,12 @@
     <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir\x64;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test_GCC|x64'">
     <NMakeBuildCommandLine>D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe</NMakeReBuildCommandLine>
-    <NMakeIncludeSearchPath>C:\boost\modular_boost\boost\libs\multiprecision\include;C:\boost\modular_boost\boost\libs\config\include</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include</NMakeIncludeSearchPath>
     <NMakePreprocessorDefinitions>BOOST_GCC;__GNUC__</NMakePreprocessorDefinitions>
     <NMakeOutput>$(ProjectDir)test.exe</NMakeOutput>
     <OutDir>$(SolutionDir)</OutDir>

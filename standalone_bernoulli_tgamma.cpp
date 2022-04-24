@@ -15,6 +15,12 @@
 #include <vector>
 
 #define EXAMPLE008_BERNOULLI_USE_LOCAL_PI
+//#define EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT
+//#define EXAMPLE008_BERNOULLI_USE_GMP_FLOAT
+
+#if !defined(EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT) && !defined(EXAMPLE008_BERNOULLI_USE_GMP_FLOAT)
+#define EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT
+#endif
 
 #if !defined(BOOST_MP_STANDALONE)
 #define BOOST_MP_STANDALONE
@@ -27,17 +33,30 @@
 #include <boost/math/constants/constants.hpp>
 #endif
 
+#if defined(EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT)
 #include <boost/multiprecision/cpp_bin_float.hpp>
+#endif
 
-// cd /mnt/c/Users/User/Documents/Ks/PC_Software/Test
-// g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -O3 -std=c++11 -I/mnt/c/boost/modular_boost/boost/libs/multiprecision/include -I/mnt/c/boost/modular_boost/boost/libs/config/include standalone_bernoulli_tgamma.cpp -o standalone_bernoulli_tgamma.exe
+#if defined(EXAMPLE008_BERNOULLI_USE_GMP_FLOAT)
+#include <boost/multiprecision/gmp.hpp>
+#endif
 
-// D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe
+// cd /mnt/c/Users/User/Documents/Ks/PC_Software/NumericalPrograms/ExtendedNumberTypes/boost_multiprecision_examples/boost_multiprecision_harden
+// g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O3 -std=c++11 -DEXAMPLE008_BERNOULLI_USE_GMP_FLOAT -I/mnt/c/boost/modular_boost/boost/libs/config/include -I. standalone_bernoulli_tgamma.cpp -lgmp -o standalone_bernoulli_tgamma.exe
+
+// D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe
+
 namespace example008_bernoulli
 {
   constexpr std::int32_t wide_decimal_digits10 = INT32_C(1001);
 
+  #if defined(EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT)
   using wide_float_backend_type = boost::multiprecision::cpp_bin_float<wide_decimal_digits10, boost::multiprecision::digit_base_10, std::allocator<void>>;
+  #endif
+
+  #if defined(EXAMPLE008_BERNOULLI_USE_GMP_FLOAT)
+  using wide_float_backend_type = boost::multiprecision::gmp_float<wide_decimal_digits10>;
+  #endif
 
   using wide_float_type = boost::multiprecision::number<wide_float_backend_type, boost::multiprecision::et_off>;
 
