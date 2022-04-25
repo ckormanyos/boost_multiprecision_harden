@@ -28,6 +28,9 @@
     <Filter Include="Source Files\boost\multiprecision\detail\functions">
       <UniqueIdentifier>{40f989ee-5b5f-4cff-97b8-62e12b666e5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\mpir">
+      <UniqueIdentifier>{e585dd5e-b63a-4fd7-abab-84c2f16a532d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="boost\multiprecision\complex_adaptor.hpp">
@@ -279,6 +282,9 @@
     <ClInclude Include="boost\multiprecision\traits\is_restricted_conversion.hpp">
       <Filter>Source Files\boost\multiprecision\traits</Filter>
     </ClInclude>
+    <ClInclude Include="mpir\gmp.h">
+      <Filter>Source Files\mpir</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp">
@@ -290,5 +296,16 @@
     <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="standalone_bernoulli_tgamma_cpp_dec_float.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="mpir\mpir_core2_lib_release.lib">
+      <Filter>Source Files\mpir</Filter>
+    </Library>
+    <Library Include="mpir\mpir_gc_lib_debug.lib">
+      <Filter>Source Files\mpir</Filter>
+    </Library>
   </ItemGroup>
 </Project>

@@ -98,14 +98,21 @@
     <ClInclude Include="boost\multiprecision\traits\max_digits10.hpp" />
     <ClInclude Include="boost\multiprecision\traits\std_integer_traits.hpp" />
     <ClInclude Include="boost\multiprecision\traits\transcendental_reduction_type.hpp" />
+    <ClInclude Include="mpir\gmp.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp" />
-    <ClCompile Include="standalone_bernoulli_tgamma_gmp_float.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="standalone_bernoulli_tgamma_cpp_dec_float.cpp" />
+    <ClCompile Include="standalone_bernoulli_tgamma_gmp_float.cpp" />
     <ClCompile Include="test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="mpir\mpir_core2_lib_release.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="mpir\mpir_gc_lib_debug.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B0D51CE3-F84E-4E3C-9543-42B54143E139}</ProjectGuid>
@@ -160,10 +167,10 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir\x64;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test_GCC|x64'">
     <NMakeBuildCommandLine>D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe</NMakeBuildCommandLine>
@@ -181,7 +188,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <AdditionalOptions>/bigobj</AdditionalOptions>
@@ -200,7 +207,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <AdditionalOptions>/bigobj</AdditionalOptions>

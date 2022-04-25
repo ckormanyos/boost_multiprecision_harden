@@ -2911,7 +2911,7 @@ inline void eval_multiply(gmp_rational& result, gmp_rational const& a, unsigned 
       result = a;
       return;
    }
-   unsigned long g = mpz_gcd_ui(nullptr, mpq_denref(a.data()), b);
+   unsigned long g = static_cast<unsigned long>(mpz_gcd_ui(nullptr, mpq_denref(a.data()), b));
    if (g != 1)
    {
       BOOST_MP_ASSERT(g);
