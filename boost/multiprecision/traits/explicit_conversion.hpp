@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 //  Copyright Vicente J. Botet Escriba 2009-2011
 //  Copyright 2012 John Maddock. Distributed under the Boost
 //  Software License, Version 1.0. (See accompanying file
@@ -52,7 +52,7 @@ struct is_explicitly_convertible_imp
    template <typename S1, typename T1>
    static char selector(...);
 
-   static constexpr const bool value = sizeof(selector<S, T>(0)) == sizeof(int);
+   static constexpr const bool value = sizeof(selector<S, T>(nullptr)) == sizeof(int);
 
    using type = std::integral_constant<bool, value>;
 };
