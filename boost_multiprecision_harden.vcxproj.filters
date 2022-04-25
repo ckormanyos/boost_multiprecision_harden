@@ -285,6 +285,9 @@
     <ClInclude Include="mpir\gmp.h">
       <Filter>Source Files\mpir</Filter>
     </ClInclude>
+    <ClInclude Include="my_digits10.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp">

@@ -26,13 +26,13 @@
 
 #include <boost/multiprecision/gmp.hpp>
 
+#include "my_digits10.h"
+
 // D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe
 
 namespace example008_bernoulli_gmp_float
 {
-  constexpr std::int32_t wide_decimal_digits10 = INT32_C(1001);
-
-  using wide_float_backend_type = boost::multiprecision::gmp_float<wide_decimal_digits10>;
+  using wide_float_backend_type = boost::multiprecision::gmp_float<my_digits10>;
 
   using wide_float_type = boost::multiprecision::number<wide_float_backend_type, boost::multiprecision::et_off>;
 

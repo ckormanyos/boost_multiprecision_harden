@@ -99,6 +99,7 @@
     <ClInclude Include="boost\multiprecision\traits\std_integer_traits.hpp" />
     <ClInclude Include="boost\multiprecision\traits\transcendental_reduction_type.hpp" />
     <ClInclude Include="mpir\gmp.h" />
+    <ClInclude Include="my_digits10.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp" />

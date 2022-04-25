@@ -26,11 +26,11 @@
 
 #include <boost/multiprecision/cpp_bin_float.hpp>
 
+#include "my_digits10.h"
+
 namespace example008_bernoulli_cpp_bin_float
 {
-  constexpr std::int32_t wide_decimal_digits10 = INT32_C(1001);
-
-  using wide_float_backend_type = boost::multiprecision::cpp_bin_float<wide_decimal_digits10, boost::multiprecision::digit_base_10, std::allocator<void>>;
+  using wide_float_backend_type = boost::multiprecision::cpp_bin_float<my_digits10, boost::multiprecision::digit_base_10, std::allocator<void>>;
 
   using wide_float_type = boost::multiprecision::number<wide_float_backend_type, boost::multiprecision::et_off>;
 

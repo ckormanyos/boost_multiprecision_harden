@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 // Copyright Christopher Kormanyos 2002 - 2021.
 // Copyright 2011 -2021 John Maddock. Distributed under the Boost
 // Software License, Version 1.0. (See accompanying file
@@ -3351,7 +3351,7 @@ template <unsigned Digits10, class ExponentType, class Allocator, class ArgType>
 inline void eval_scalbn(cpp_dec_float<Digits10, ExponentType, Allocator>& result, const cpp_dec_float<Digits10, ExponentType, Allocator>& val, ArgType e_)
 {
    using default_ops::eval_multiply;
-   const typename cpp_dec_float<Digits10, ExponentType, Allocator>::exponent_type                               e = static_cast<typename cpp_dec_float<Digits10, ExponentType, Allocator>::exponent_type>(e_);
+   const typename cpp_dec_float<Digits10, ExponentType, Allocator>::exponent_type e = static_cast<typename cpp_dec_float<Digits10, ExponentType, Allocator>::exponent_type>(e_);
    cpp_dec_float<Digits10, ExponentType, Allocator> t(1.0, e);
    eval_multiply(result, val, t);
 }
