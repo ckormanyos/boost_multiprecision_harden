@@ -30,11 +30,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="standalone_bernoulli_tgamma.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="boost\multiprecision\complex_adaptor.hpp">
       <Filter>Source Files\boost\multiprecision</Filter>
     </ClInclude>
@@ -284,5 +279,16 @@
     <ClInclude Include="boost\multiprecision\traits\is_restricted_conversion.hpp">
       <Filter>Source Files\boost\multiprecision\traits</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="standalone_bernoulli_tgamma_gmp_float.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

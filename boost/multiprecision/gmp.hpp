@@ -2144,7 +2144,7 @@ inline void eval_convert_to(int128_type* result, const gmp_int& val)
    // Overflow check:
    //
    constexpr const int128_type int128_max = static_cast<int128_type>((static_cast<uint128_type>(1u) << 127) - 1);
-   constexpr const int128_type int128_min = (static_cast<uint128_type>(1u) << 127);
+   constexpr const int128_type int128_min = static_cast<int128_type>(static_cast<int128_type>(-int128_max) -1);
    bool overflow = false;
    if (mpz_sgn(t.data()))
    {
@@ -3006,7 +3006,9 @@ inline void assign_components(gmp_rational& result, unsigned long v1, unsigned l
 }
 inline void assign_components(gmp_rational& result, long v1, long v2)
 {
-   mpq_set_si(result.data(), v1, v2);
+   using local_uint_type = typename boost::multiprecision::detail::make_unsigned<long>::type;
+
+   mpq_set_si(result.data(), v1, static_cast<local_uint_type>(v2));
    mpq_canonicalize(result.data());
 }
 inline void assign_components(gmp_rational& result, gmp_int const& v1, gmp_int const& v2)

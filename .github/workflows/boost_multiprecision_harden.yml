@@ -1,4 +1,4 @@
-﻿# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 #  Copyright Christopher Kormanyos 2022.
 #  Distributed under the Boost Software License,
 #  Version 1.0. (See accompanying file LICENSE_1_0.txt
@@ -38,41 +38,7 @@ jobs:
         run: |
           echo "compile ./standalone_bernoulli_tgamma.exe"
           ${{ matrix.compiler }} -v
-          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -std=${{ matrix.standard }} -I../boost-root -I. standalone_bernoulli_tgamma.cpp -o standalone_bernoulli_tgamma.exe
-          ls -la ./standalone_bernoulli_tgamma.exe
-          echo "run ./standalone_bernoulli_tgamma.exe"
-          ./standalone_bernoulli_tgamma.exe
-  gcc-clang-native-gmp:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        standard: [ c++11, c++14, c++17, c++2a ]
-        compiler: [ g++, clang++ ]
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
-      - name: install GMP
-        run: |
-          sudo apt-get update --quiet
-          sudo apt-get install --no-install-recommends --quiet --yes libgmp-dev
-      - name: clone-submods-bootstrap-headers-boost-develop
-        run: |
-          git clone -b develop --depth 1 https://github.com/boostorg/boost.git ../boost-root
-          cd ../boost-root
-          git submodule update --init tools
-          git submodule update --init libs/config
-          ./bootstrap.sh
-          ./b2 headers
-      - name: gcc-clang-native
-        run: |
-          echo "compile ./standalone_bernoulli_tgamma.exe"
-          ${{ matrix.compiler }} -v
-          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -std=${{ matrix.standard }} -DEXAMPLE008_BERNOULLI_USE_GMP_FLOAT -I../boost-root -I. standalone_bernoulli_tgamma.cpp -lgmp -o standalone_bernoulli_tgamma.exe
-          ls -la ./standalone_bernoulli_tgamma.exe
-          echo "run ./standalone_bernoulli_tgamma.exe"
-          ./standalone_bernoulli_tgamma.exe
+          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -std=${{ matrix.standard }} -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_gmp_float.cpp test.cpp -lgmp -o test.exe
+          ls -la ./test.exe
+          echo "run ./test.exe"
+          ./test.exe

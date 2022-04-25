@@ -15,9 +15,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="standalone_bernoulli_tgamma.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="boost\multiprecision\complex128.hpp" />
     <ClInclude Include="boost\multiprecision\complex_adaptor.hpp" />
     <ClInclude Include="boost\multiprecision\concepts\mp_number_archetypes.hpp" />
@@ -101,6 +98,14 @@
     <ClInclude Include="boost\multiprecision\traits\max_digits10.hpp" />
     <ClInclude Include="boost\multiprecision\traits\std_integer_traits.hpp" />
     <ClInclude Include="boost\multiprecision\traits\transcendental_reduction_type.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp" />
+    <ClCompile Include="standalone_bernoulli_tgamma_gmp_float.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B0D51CE3-F84E-4E3C-9543-42B54143E139}</ProjectGuid>

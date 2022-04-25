@@ -7,20 +7,11 @@
 
 #include <array>
 #include <cstdint>
-#include <ctime>
-#include <iomanip>
-#include <iostream>
 #include <memory>
 #include <utility>
 #include <vector>
 
 #define EXAMPLE008_BERNOULLI_USE_LOCAL_PI
-//#define EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT
-//#define EXAMPLE008_BERNOULLI_USE_GMP_FLOAT
-
-#if !defined(EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT) && !defined(EXAMPLE008_BERNOULLI_USE_GMP_FLOAT)
-#define EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT
-#endif
 
 #if !defined(BOOST_MP_STANDALONE)
 #define BOOST_MP_STANDALONE
@@ -33,30 +24,15 @@
 #include <boost/math/constants/constants.hpp>
 #endif
 
-#if defined(EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT)
-#include <boost/multiprecision/cpp_bin_float.hpp>
-#endif
-
-#if defined(EXAMPLE008_BERNOULLI_USE_GMP_FLOAT)
 #include <boost/multiprecision/gmp.hpp>
-#endif
-
-// cd /mnt/c/Users/User/Documents/Ks/PC_Software/NumericalPrograms/ExtendedNumberTypes/boost_multiprecision_examples/boost_multiprecision_harden
-// g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O3 -std=c++11 -DEXAMPLE008_BERNOULLI_USE_GMP_FLOAT -I/mnt/c/boost/modular_boost/boost/libs/config/include -I. standalone_bernoulli_tgamma.cpp -lgmp -o standalone_bernoulli_tgamma.exe
 
 // D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe
 
-namespace example008_bernoulli
+namespace example008_bernoulli_gmp_float
 {
   constexpr std::int32_t wide_decimal_digits10 = INT32_C(1001);
 
-  #if defined(EXAMPLE008_BERNOULLI_USE_CPP_BIN_FLOAT)
-  using wide_float_backend_type = boost::multiprecision::cpp_bin_float<wide_decimal_digits10, boost::multiprecision::digit_base_10, std::allocator<void>>;
-  #endif
-
-  #if defined(EXAMPLE008_BERNOULLI_USE_GMP_FLOAT)
   using wide_float_backend_type = boost::multiprecision::gmp_float<wide_decimal_digits10>;
-  #endif
 
   using wide_float_type = boost::multiprecision::number<wide_float_backend_type, boost::multiprecision::et_off>;
 
@@ -326,7 +302,7 @@ namespace example008_bernoulli
       sum += term;
     }
 
-    using example008_bernoulli::pi;
+    using example008_bernoulli_gmp_float::pi;
     using std::exp;
 
     static const floating_point_type half           = floating_point_type(1U) / 2U;
@@ -342,17 +318,17 @@ namespace example008_bernoulli
 
     return g;
   }
-} // namespace example008_bernoulli
+} // namespace example008_bernoulli_gmp_float
 
-auto example008_bernoulli_tgamma() -> bool
+auto example008_bernoulli_tgamma_gmp_float() -> bool
 {
-  const std::clock_t start = std::clock();
+  using namespace example008_bernoulli_gmp_float;
 
   // Initialize the table of Bernoulli numbers.
-  example008_bernoulli::bernoulli_b
+  bernoulli_b
   (
-    example008_bernoulli::bernoulli_table().data(),
-    static_cast<std::uint32_t>(example008_bernoulli::bernoulli_table().size())
+    bernoulli_table().data(),
+    static_cast<std::uint32_t>(bernoulli_table().size())
   );
 
   // In this example, we compute values of Gamma[1/2 + n].
@@ -387,8 +363,6 @@ auto example008_bernoulli_tgamma() -> bool
 
   bool result_is_ok = true;
 
-  using example008_bernoulli::wide_float_type;
-
   const wide_float_type tol (std::numeric_limits<wide_float_type>::epsilon() * UINT32_C(100000));
   const wide_float_type half(0.5F);
 
@@ -396,11 +370,10 @@ auto example008_bernoulli_tgamma() -> bool
   {
     // Calculate Gamma[1/2 + i]
 
-    const wide_float_type g = example008_bernoulli::tgamma(half + i);
+    const wide_float_type g = tgamma(half + i);
 
     // Calculate the control value.
 
-    using example008_bernoulli::pi;
     using std::fabs;
     using std::sqrt;
 
@@ -411,20 +384,5 @@ auto example008_bernoulli_tgamma() -> bool
     result_is_ok &= (closeness < tol);
   }
 
-  const std::clock_t stop = std::clock();
-
-  std::cout << "Time example008_bernoulli_tgamma(): "
-            << static_cast<float>(stop - start) / static_cast<float>(CLOCKS_PER_SEC)
-            << std::endl;
-
   return result_is_ok;
-}
-
-int main()
-{
-  const bool result_is_ok = example008_bernoulli_tgamma();
-
-  std::cout << "result_is_ok: " << std::boolalpha << result_is_ok << std::endl;
-
-  return (result_is_ok ? 0 : -1);
 }
