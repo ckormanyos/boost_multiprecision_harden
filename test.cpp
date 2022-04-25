@@ -35,8 +35,6 @@ namespace local
 
 auto main() -> int
 {
-  using function_type = std::function<bool()>;
-
   const auto result_is_ok_cpp_bin_float = local::test(example008_bernoulli_tgamma_cpp_bin_float);
   const auto result_is_ok_cpp_dec_float = local::test(example008_bernoulli_tgamma_cpp_dec_float);
   const auto result_is_ok_gmp_____float = local::test(example008_bernoulli_tgamma_gmp_float);

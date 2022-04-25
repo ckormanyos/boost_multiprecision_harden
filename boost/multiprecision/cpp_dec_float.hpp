@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // Copyright Christopher Kormanyos 2002 - 2021.
 // Copyright 2011 -2021 John Maddock. Distributed under the Boost
 // Software License, Version 1.0. (See accompanying file
@@ -656,7 +656,7 @@ class cpp_dec_float
 
          array_for_mul_result_type result;
 
-         eval_multiply_n_by_n_to_2n(result.data(), data.data(), v.data.data(), prec_elems_for_multiply);
+         eval_multiply_n_by_n_to_2n(result.data(), data.data(), v.data.data(), static_cast<std::uint32_t>(prec_elems_for_multiply));
 
          // Handle a potential carry.
          if(result[0U] != static_cast<std::uint32_t>(0U))
@@ -814,14 +814,14 @@ cpp_dec_float<Digits10, ExponentType, Allocator>& cpp_dec_float<Digits10, Expone
       // at a time, each element with carry.
       if (ofs >= static_cast<std::int32_t>(0))
       {
-         std::copy(v.data.cbegin(), v.data.cend() - static_cast<size_t>(ofs), n_data.begin() + static_cast<size_t>(ofs));
-         std::fill(n_data.begin(), n_data.begin() + static_cast<size_t>(ofs), static_cast<std::uint32_t>(0u));
+         std::copy(v.data.cbegin(), v.data.cend() - static_cast<std::ptrdiff_t>(ofs), n_data.begin() + static_cast<std::ptrdiff_t>(ofs));
+         std::fill(n_data.begin(), n_data.begin() + static_cast<std::ptrdiff_t>(ofs), static_cast<std::uint32_t>(0u));
          p_v = n_data.data();
       }
       else
       {
-         std::copy(data.cbegin(), data.cend() - static_cast<size_t>(-ofs), n_data.begin() + static_cast<size_t>(-ofs));
-         std::fill(n_data.begin(), n_data.begin() + static_cast<size_t>(-ofs), static_cast<std::uint32_t>(0u));
+         std::copy(data.cbegin(), data.cend() - static_cast<std::ptrdiff_t>(-ofs), n_data.begin() + static_cast<std::ptrdiff_t>(-ofs));
+         std::fill(n_data.begin(), n_data.begin() + static_cast<std::ptrdiff_t>(-ofs), static_cast<std::uint32_t>(0u));
          p_u    = n_data.data();
          b_copy = true;
       }
@@ -853,8 +853,8 @@ cpp_dec_float<Digits10, ExponentType, Allocator>& cpp_dec_float<Digits10, Expone
          // Copy the data of v, shifted down to a lower value
          // into the data array m_n. Set the operand pointer p_v
          // to point to the copied, shifted data m_n.
-         std::copy(v.data.cbegin(), v.data.cend() - static_cast<size_t>(ofs), n_data.begin() + static_cast<size_t>(ofs));
-         std::fill(n_data.begin(), n_data.begin() + static_cast<size_t>(ofs), static_cast<std::uint32_t>(0u));
+         std::copy(v.data.cbegin(), v.data.cend() - static_cast<std::ptrdiff_t>(ofs), n_data.begin() + static_cast<std::ptrdiff_t>(ofs));
+         std::fill(n_data.begin(), n_data.begin() + static_cast<std::ptrdiff_t>(ofs), static_cast<std::uint32_t>(0u));
          p_v = n_data.data();
       }
       else
@@ -863,8 +863,8 @@ cpp_dec_float<Digits10, ExponentType, Allocator>& cpp_dec_float<Digits10, Expone
          {
             // In this case, |u| < |v| and ofs is negative.
             // Shift the data of u down to a lower value.
-            std::copy_backward(data.cbegin(), data.cend() - static_cast<size_t>(-ofs), data.end());
-            std::fill(data.begin(), data.begin() + static_cast<size_t>(-ofs), static_cast<std::uint32_t>(0u));
+            std::copy_backward(data.cbegin(), data.cend() - static_cast<std::ptrdiff_t>(-ofs), data.end());
+            std::fill(data.begin(), data.begin() + static_cast<std::ptrdiff_t>(-ofs), static_cast<std::uint32_t>(0u));
          }
 
          // Copy the data of v into the data array n_data.
@@ -904,8 +904,8 @@ cpp_dec_float<Digits10, ExponentType, Allocator>& cpp_dec_float<Digits10, Expone
             // Justify the data
             const std::size_t sj = static_cast<std::size_t>(std::distance<typename array_type::const_iterator>(data.begin(), first_nonzero_elem));
 
-            std::copy(data.begin() + static_cast<std::size_t>(sj), data.end(), data.begin());
-            std::fill(data.end() - sj, data.end(), static_cast<std::uint32_t>(0u));
+            std::copy(data.begin() + static_cast<std::ptrdiff_t>(sj), data.end(), data.begin());
+            std::fill(data.end() - static_cast<std::ptrdiff_t>(sj), data.end(), static_cast<std::uint32_t>(0u));
 
             exp -= static_cast<exponent_type>(sj * static_cast<std::size_t>(cpp_dec_float_elem_digits10));
          }
@@ -1194,8 +1194,8 @@ cpp_dec_float<Digits10, ExponentType, Allocator>& cpp_dec_float<Digits10, Expone
          exp -= static_cast<exponent_type>(cpp_dec_float_elem_digits10);
 
          // Shift result of the division one element to the left.
-         std::copy(data.begin() + static_cast<std::size_t>(1u),
-                   data.begin() + static_cast<std::size_t>(prec_elem - static_cast<std::int32_t>(1)),
+         std::copy(data.begin() + static_cast<std::ptrdiff_t>(1),
+                   data.begin() + static_cast<std::ptrdiff_t>(prec_elem - static_cast<std::int32_t>(1)),
                    data.begin());
 
          data[static_cast<std::size_t>(prec_elem - static_cast<std::int32_t>(1))] = static_cast<std::uint32_t>(static_cast<std::uint64_t>(prev * static_cast<std::uint64_t>(cpp_dec_float_elem_mask)) / nn);
@@ -2806,35 +2806,35 @@ void cpp_dec_float<Digits10, ExponentType, Allocator>::eval_multiply_kara_n_by_n
             std::uint32_t* t4 = t + (n + n);
 
       // Step 1
-      eval_multiply_kara_n_by_n_to_2n(r0, a1, b1, nh, t);
-      eval_multiply_kara_n_by_n_to_2n(r2, a0, b0, nh, t);
+      eval_multiply_kara_n_by_n_to_2n(r0, a1, b1, static_cast<std::uint32_t>(nh), t);
+      eval_multiply_kara_n_by_n_to_2n(r2, a0, b0, static_cast<std::uint32_t>(nh), t);
       std::copy(r0, r0 + (2U * n), t0);
 
       // Step 2
       std::uint32_t carry;
-      carry = eval_add_n(r1, r1, t0, n);
+      carry = eval_add_n(r1, r1, t0, static_cast<std::int32_t>(n));
       eval_multiply_kara_propagate_carry(r0, nh, carry);
-      carry = eval_add_n(r1, r1, t2, n);
+      carry = eval_add_n(r1, r1, t2, static_cast<std::int32_t>(n));
       eval_multiply_kara_propagate_carry(r0, nh, carry);
 
       // Step 3
       const int cmp_result_a1a0 = compare_ranges(a1, a0, nh);
 
       if(cmp_result_a1a0 == 1)
-         static_cast<void>(eval_subtract_n(t0, a1, a0, nh));
+         static_cast<void>(eval_subtract_n(t0, a1, a0, static_cast<std::int32_t>(nh)));
       else if(cmp_result_a1a0 == -1)
-         static_cast<void>(eval_subtract_n(t0, a0, a1, nh));
+         static_cast<void>(eval_subtract_n(t0, a0, a1, static_cast<std::int32_t>(nh)));
 
       // Step 4
       const int cmp_result_b0b1 = compare_ranges(b0, b1, nh);
 
       if(cmp_result_b0b1 == 1)
-         static_cast<void>(eval_subtract_n(t1, b0, b1, nh));
+         static_cast<void>(eval_subtract_n(t1, b0, b1, static_cast<std::int32_t>(nh)));
       else if(cmp_result_b0b1 == -1)
-         static_cast<void>(eval_subtract_n(t1, b1, b0, nh));
+         static_cast<void>(eval_subtract_n(t1, b1, b0, static_cast<std::int32_t>(nh)));
 
       // Step 5
-      eval_multiply_kara_n_by_n_to_2n(t2, t0, t1, nh, t4);
+      eval_multiply_kara_n_by_n_to_2n(t2, t0, t1, static_cast<std::uint32_t>(nh), t4);
 
       // Step 6
       if((cmp_result_a1a0 * cmp_result_b0b1) == 1)
