@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 // Copyright Christopher Kormanyos 2002 - 2021.
 // Copyright 2011 -2021 John Maddock. Distributed under the Boost
 // Software License, Version 1.0. (See accompanying file
@@ -2813,12 +2813,12 @@ void cpp_dec_float<Digits10, ExponentType, Allocator>::eval_multiply_kara_n_by_n
       // Step 2
       std::uint32_t carry;
       carry = eval_add_n(r1, r1, t0, static_cast<std::int32_t>(n));
-      eval_multiply_kara_propagate_carry(r0, nh, carry);
+      eval_multiply_kara_propagate_carry(r0, static_cast<std::uint32_t>(nh), carry);
       carry = eval_add_n(r1, r1, t2, static_cast<std::int32_t>(n));
-      eval_multiply_kara_propagate_carry(r0, nh, carry);
+      eval_multiply_kara_propagate_carry(r0, static_cast<std::uint32_t>(nh), carry);
 
       // Step 3
-      const int cmp_result_a1a0 = compare_ranges(a1, a0, nh);
+      const int cmp_result_a1a0 = compare_ranges(a1, a0, static_cast<std::uint32_t>(nh));
 
       if(cmp_result_a1a0 == 1)
          static_cast<void>(eval_subtract_n(t0, a1, a0, static_cast<std::int32_t>(nh)));
@@ -2826,7 +2826,7 @@ void cpp_dec_float<Digits10, ExponentType, Allocator>::eval_multiply_kara_n_by_n
          static_cast<void>(eval_subtract_n(t0, a0, a1, static_cast<std::int32_t>(nh)));
 
       // Step 4
-      const int cmp_result_b0b1 = compare_ranges(b0, b1, nh);
+      const int cmp_result_b0b1 = compare_ranges(b0, b1, static_cast<std::uint32_t>(nh));
 
       if(cmp_result_b0b1 == 1)
          static_cast<void>(eval_subtract_n(t1, b0, b1, static_cast<std::int32_t>(nh)));
@@ -2839,15 +2839,15 @@ void cpp_dec_float<Digits10, ExponentType, Allocator>::eval_multiply_kara_n_by_n
       // Step 6
       if((cmp_result_a1a0 * cmp_result_b0b1) == 1)
       {
-         carry = eval_add_n(r1, r1, t2, n);
+         carry = eval_add_n(r1, r1, t2, static_cast<std::int32_t>(n));
 
-         eval_multiply_kara_propagate_carry(r0, nh, carry);
+         eval_multiply_kara_propagate_carry(r0, static_cast<std::uint32_t>(nh), carry);
       }
       else if((cmp_result_a1a0 * cmp_result_b0b1) == -1)
       {
-         const bool has_borrow = eval_subtract_n(r1, r1, t2, n);
+         const bool has_borrow = eval_subtract_n(r1, r1, t2, static_cast<std::int32_t>(n));
 
-         eval_multiply_kara_propagate_borrow(r0, nh, has_borrow);
+         eval_multiply_kara_propagate_borrow(r0, static_cast<std::uint32_t>(nh), has_borrow);
       }
    }
 }
