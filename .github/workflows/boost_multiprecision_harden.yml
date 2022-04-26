@@ -1,4 +1,4 @@
-# ------------------------------------------------------------------------------
+﻿# ------------------------------------------------------------------------------
 #  Copyright Christopher Kormanyos 2022.
 #  Distributed under the Boost Software License,
 #  Version 1.0. (See accompanying file LICENSE_1_0.txt
@@ -70,5 +70,5 @@ jobs:
         run: |
           echo "compile ./test.elf"
           ${{ matrix.compiler }} -v
-          ${{ matrix.compiler }} -std=${{ matrix.standard }} -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O2 -g -gdwarf-2 -fno-exceptions -ffunction-sections -fdata-sections -x c++ -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -fno-enforce-eh-specs -ftemplate-depth=128 -marm -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfpv2 -mfloat-abi=hard -ffast-math -DBOOST_NO_EXCEPTIONS -I./src/mcal/stm32f446 -I/mnt/c/boost/modular_boost/boost/libs/config/include -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp test.cpp -Wl,--gc-sections -Wl,-Map,./test.map --specs=nano.specs --specs=nosys.specs -o ./test.elf
+          ${{ matrix.compiler }} -std=${{ matrix.standard }} -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O2 -g -gdwarf-2 -fno-exceptions -ffunction-sections -fdata-sections -x c++ -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -fno-enforce-eh-specs -ftemplate-depth=128 -marm -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfpv2 -mfloat-abi=hard -ffast-math -DBOOST_NO_EXCEPTIONS -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp test.cpp -Wl,--gc-sections -Wl,-Map,./test.map --specs=nano.specs --specs=nosys.specs -o ./test.elf
           ls -la ./test.elf

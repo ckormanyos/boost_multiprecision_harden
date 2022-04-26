@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////
 //  Copyright Christopher Kormanyos 2022.                        //
 //  Distributed under the Boost Software License,                //
 //  Version 1.0. (See accompanying file LICENSE_1_0.txt          //
@@ -72,5 +72,5 @@ auto main() -> int
 
 #if defined(__arm__)
 extern "C"
-[[nodiscard]] void __sync_synchronize() { }
+void __sync_synchronize() { asm volatile("nop"); }
 #endif

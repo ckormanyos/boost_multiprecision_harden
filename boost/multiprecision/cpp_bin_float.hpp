@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////
 //  Copyright 2013 - 2022 John Maddock.
 //  Copyright 2022 Christopher Kormanyos.
 //  Distributed under the Boost Software License,
@@ -160,7 +160,7 @@ class cpp_bin_float
    }
    template <class Float>
    cpp_bin_float(const Float& f,
-                 typename std::enable_if<detail::is_cpp_bin_float_implicitly_constructible_from_type<Float, bit_count>::value>::type const* = nullptr)
+                 typename std::enable_if<detail::is_cpp_bin_float_implicitly_constructible_from_type<Float, static_cast<std::ptrdiff_t>(bit_count)>::value>::type const* = nullptr)
        : m_data(), m_exponent(0), m_sign(false)
    {
       this->assign_float(f);
@@ -168,7 +168,7 @@ class cpp_bin_float
 
    template <class Float>
    explicit cpp_bin_float(const Float& f,
-                          typename std::enable_if<detail::is_cpp_bin_float_explicitly_constructible_from_type<Float, bit_count>::value>::type const* = nullptr)
+                          typename std::enable_if<detail::is_cpp_bin_float_explicitly_constructible_from_type<Float, static_cast<std::ptrdiff_t>(bit_count)>::value>::type const* = nullptr)
        : m_data(), m_exponent(0), m_sign(false)
    {
       this->assign_float(f);
