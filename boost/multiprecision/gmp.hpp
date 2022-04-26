@@ -1,7 +1,6 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2011 -2022 John Maddock.
-//  Copyright 2021 Matt Borland.
-//  Copyright 2022 Christopher Kormanyos. Distributed under the Boost
+///////////////////////////////////////////////////////////////////////////////
+//  Copyright 2011 John Maddock.
+//  Copyright 2021 Matt Borland. Distributed under the Boost
 //  Software License, Version 1.0. (See accompanying file
 //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
@@ -3101,6 +3100,7 @@ void assign_components(gmp_rational& result, const T& a, const gmp_int& b)
    mpz_set(&result.data()[0]._mp_den, b.data());
    mpq_canonicalize(result.data());
 }
+
 
 inline std::size_t hash_value(const gmp_rational& val)
 {
