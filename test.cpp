@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////
 //  Copyright Christopher Kormanyos 2022.                        //
 //  Distributed under the Boost Software License,                //
 //  Version 1.0. (See accompanying file LICENSE_1_0.txt          //
@@ -11,7 +11,7 @@
 #include <iostream>
 
 // cd /mnt/c/Users/User/Documents/Ks/PC_Software/NumericalPrograms/ExtendedNumberTypes/boost_multiprecision_examples/boost_multiprecision_harden
-// g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O3 -std=c++11 -I/mnt/c/boost/modular_boost/boost/libs/config/include -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_gmp_float.cpp test.cpp -lgmp -o test.exe
+// g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O3 -std=c++11 -I/mnt/c/boost/modular_boost/boost/libs/config/include -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp standalone_bernoulli_tgamma_gmp_float.cpp test.cpp -lgmp -o test.exe
 
 extern auto example008_bernoulli_tgamma_cpp_bin_float() -> bool;
 extern auto example008_bernoulli_tgamma_cpp_dec_float() -> bool;
