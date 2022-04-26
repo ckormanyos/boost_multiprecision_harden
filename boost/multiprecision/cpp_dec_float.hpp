@@ -1104,8 +1104,8 @@ cpp_dec_float<Digits10, ExponentType, Allocator>& cpp_dec_float<Digits10, Expone
 
       // Shift the result of the multiplication one element to the right.
       std::copy_backward(data.begin(),
-                         data.begin() + static_cast<std::size_t>(prec_elem - static_cast<std::int32_t>(1)),
-                         data.begin() + static_cast<std::size_t>(prec_elem));
+                         data.begin() + static_cast<std::ptrdiff_t>(prec_elem - static_cast<std::int32_t>(1)),
+                         data.begin() + static_cast<std::ptrdiff_t>(prec_elem));
 
       data.front() = static_cast<std::uint32_t>(carry);
    }
@@ -1509,7 +1509,7 @@ bool cpp_dec_float<Digits10, ExponentType, Allocator>::isint() const
       return true;
    }
 
-   typename array_type::const_iterator it_non_zero = std::find_if(data.begin() + offset_decimal_part, data.end(), data_elem_is_non_zero_predicate);
+   typename array_type::const_iterator it_non_zero = std::find_if(data.begin() + static_cast<std::ptrdiff_t>(offset_decimal_part), data.end(), data_elem_is_non_zero_predicate);
 
    return (it_non_zero == data.end());
 }
@@ -1921,7 +1921,7 @@ std::string cpp_dec_float<Digits10, ExponentType, Allocator>::str(std::intmax_t 
    else if (f & std::ios_base::scientific)
       ++number_of_digits;
    // Determine the number of elements needed to provide the requested digits from cpp_dec_float<Digits10, ExponentType, Allocator>.
-   const std::size_t number_of_elements = (std::min)(static_cast<std::size_t>((number_of_digits / static_cast<std::size_t>(cpp_dec_float_elem_digits10)) + 2u),
+   const std::size_t number_of_elements = (std::min)(static_cast<std::size_t>(static_cast<std::size_t>(number_of_digits / static_cast<std::intmax_t>(cpp_dec_float_elem_digits10)) + 2u),
                                                      static_cast<std::size_t>(cpp_dec_float_elem_number));
 
    // Extract the remaining digits from cpp_dec_float<Digits10, ExponentType, Allocator> after the decimal point.
@@ -2462,7 +2462,7 @@ typename std::enable_if<std::is_floating_point<Float>::value, cpp_dec_float<Digi
 
    constexpr int shift = std::numeric_limits<int>::digits - 1;
 
-   while (f)
+   while (f != static_cast<Float>(0.0f))
    {
       // extract int sized bits from f:
       f = ldexp(f, shift);
