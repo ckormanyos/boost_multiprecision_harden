@@ -353,7 +353,11 @@ class cpp_dec_float
          negate();
       }
       else
-         from_unsigned_long_long(v);
+      {
+         using local_ulonglong_type = typename boost::multiprecision::detail::make_unsigned<long long>::type;
+
+         from_unsigned_long_long(static_cast<local_ulonglong_type>(v));
+      }
       return *this;
    }
 
@@ -1881,11 +1885,11 @@ cpp_dec_float<Digits10, ExponentType, Allocator> cpp_dec_float<Digits10, Exponen
    cpp_dec_float<Digits10, ExponentType, Allocator> x = *this;
 
    // Clear out the decimal portion
-   const size_t first_clear = (static_cast<size_t>(x.exp) / static_cast<size_t>(cpp_dec_float_elem_digits10)) + 1u;
-   const size_t last_clear  = static_cast<size_t>(cpp_dec_float_elem_number);
+   const std::size_t first_clear = (static_cast<std::size_t>(x.exp) / static_cast<std::size_t>(cpp_dec_float_elem_digits10)) + 1u;
+   const std::size_t last_clear  =  static_cast<std::size_t>(cpp_dec_float_elem_number);
 
    if (first_clear < last_clear)
-      std::fill(x.data.begin() + first_clear, x.data.begin() + last_clear, static_cast<std::uint32_t>(0u));
+      std::fill(x.data.begin() + static_cast<std::ptrdiff_t>(first_clear), x.data.begin() + static_cast<std::ptrdiff_t>(last_clear), static_cast<std::uint32_t>(0u));
 
    return x;
 }
@@ -3175,7 +3179,11 @@ inline void eval_add(cpp_dec_float<Digits10, ExponentType, Allocator>& result, l
    if (o < 0)
       result.sub_unsigned_long_long(boost::multiprecision::detail::unsigned_abs(o));
    else
-      result.add_unsigned_long_long(o);
+   {
+      using local_ulonglong_type = typename boost::multiprecision::detail::make_unsigned<long long>::type;
+
+      result.add_unsigned_long_long(static_cast<local_ulonglong_type>(o));
+   }
 }
 template <unsigned Digits10, class ExponentType, class Allocator>
 inline void eval_subtract(cpp_dec_float<Digits10, ExponentType, Allocator>& result, long long o)
@@ -3183,7 +3191,11 @@ inline void eval_subtract(cpp_dec_float<Digits10, ExponentType, Allocator>& resu
    if (o < 0)
       result.add_unsigned_long_long(boost::multiprecision::detail::unsigned_abs(o));
    else
-      result.sub_unsigned_long_long(o);
+   {
+      using local_ulonglong_type = typename boost::multiprecision::detail::make_unsigned<long long>::type;
+
+      result.sub_unsigned_long_long(static_cast<local_ulonglong_type>(o));
+   }
 }
 template <unsigned Digits10, class ExponentType, class Allocator>
 inline void eval_multiply(cpp_dec_float<Digits10, ExponentType, Allocator>& result, long long o)
@@ -3194,7 +3206,11 @@ inline void eval_multiply(cpp_dec_float<Digits10, ExponentType, Allocator>& resu
       result.negate();
    }
    else
-      result.mul_unsigned_long_long(o);
+   {
+      using local_ulonglong_type = typename boost::multiprecision::detail::make_unsigned<long long>::type;
+
+      result.mul_unsigned_long_long(static_cast<local_ulonglong_type>(o));
+   }
 }
 template <unsigned Digits10, class ExponentType, class Allocator>
 inline void eval_divide(cpp_dec_float<Digits10, ExponentType, Allocator>& result, long long o)
@@ -3205,7 +3221,11 @@ inline void eval_divide(cpp_dec_float<Digits10, ExponentType, Allocator>& result
       result.negate();
    }
    else
-      result.div_unsigned_long_long(static_cast<unsigned long long>(o));
+   {
+      using local_ulonglong_type = typename boost::multiprecision::detail::make_unsigned<long long>::type;
+
+      result.div_unsigned_long_long(static_cast<local_ulonglong_type>(o));
+   }
 }
 
 template <unsigned Digits10, class ExponentType, class Allocator>
