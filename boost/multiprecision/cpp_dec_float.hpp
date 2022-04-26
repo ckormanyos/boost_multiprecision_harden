@@ -2534,9 +2534,9 @@ int cpp_dec_float<Digits10, ExponentType, Allocator>::compare_ranges(InputIterat
    using local_iterator_right_type = InputIteratorTypeRight;
 
    local_iterator_left_type  begin_a(a);
-   local_iterator_left_type  end_a  (a + count);
+   local_iterator_left_type  end_a  (a + static_cast<typename std::iterator_traits<local_iterator_left_type >::difference_type>(count));
    local_iterator_right_type begin_b(b);
-   local_iterator_right_type end_b  (b + count);
+   local_iterator_right_type end_b  (b + static_cast<typename std::iterator_traits<local_iterator_right_type>::difference_type>(count));
 
    const auto mismatch_pair = std::mismatch(begin_a, end_a, begin_b);
 
@@ -2544,8 +2544,8 @@ int cpp_dec_float<Digits10, ExponentType, Allocator>::compare_ranges(InputIterat
 
    if((mismatch_pair.first != end_a) || (mismatch_pair.second != end_b))
    {
-      const typename std::iterator_traits<InputIteratorTypeLeft>::value_type  left  = *mismatch_pair.first;
-      const typename std::iterator_traits<InputIteratorTypeRight>::value_type right = *mismatch_pair.second;
+      const typename std::iterator_traits<local_iterator_left_type >::value_type left  = *mismatch_pair.first;
+      const typename std::iterator_traits<local_iterator_right_type>::value_type right = *mismatch_pair.second;
 
       n_return = ((left > right) ?  1 : -1);
    }
