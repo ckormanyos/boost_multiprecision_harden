@@ -64,7 +64,10 @@ auto main() -> int
   );
 
   #if !defined(__arm__)
-  std::cout << "result_is_ok: " << std::boolalpha << result_is_ok << std::endl;
+  std::cout << "result_is_ok_cpp_bin_float: " << std::boolalpha << result_is_ok_cpp_bin_float << std::endl;
+  std::cout << "result_is_ok_cpp_dec_float: " << std::boolalpha << result_is_ok_cpp_dec_float << std::endl;
+  std::cout << "result_is_ok_gmp_____float: " << std::boolalpha << result_is_ok_gmp_____float << std::endl;
+  std::cout << "result_is_ok (total):       " << std::boolalpha << result_is_ok               << std::endl;
   #endif
 
   return (result_is_ok ? 0 : -1);
