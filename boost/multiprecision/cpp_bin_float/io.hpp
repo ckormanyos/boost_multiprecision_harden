@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 //  Copyright 2013 John Maddock. Distributed under the Boost
 //  Software License, Version 1.0. (See accompanying file
 //  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
@@ -527,15 +527,15 @@ std::string cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::s
       // but for larger exponents we add a few extra limbs to max_bits:
       //
 #ifdef BOOST_MP_STRESS_IO
-      std::uintmax_t max_bits = static_cast<std::uintmax_t>(cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count) + 32u;
+      std::intmax_t max_bits = cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count + 32;
 #else
-      std::uintmax_t max_bits = static_cast<std::uintmax_t>(cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count) + ((cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count % limb_bits) ? (limb_bits - cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count % limb_bits) : 0u) + limb_bits;
+      std::intmax_t max_bits = cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count + ((cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count % limb_bits) ? (limb_bits - cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count % limb_bits) : 0) + limb_bits;
       if (power10)
       {
          const std::uintmax_t abs_power10 = static_cast<std::uintmax_t>(boost::multiprecision::detail::abs(power10));
-         const std::uintmax_t msb_div8    = static_cast<std::uintmax_t>(msb(abs_power10) / 8u);
+         const std::intmax_t  msb_div8    = static_cast<std::intmax_t>(msb(abs_power10) / 8u);
 
-         max_bits += static_cast<std::uintmax_t>(msb_div8 * limb_bits);
+         max_bits += (msb_div8 * static_cast<std::intmax_t>(limb_bits));
       }
 #endif
       do
