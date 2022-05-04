@@ -98,6 +98,7 @@
     <ClInclude Include="boost\multiprecision\traits\max_digits10.hpp" />
     <ClInclude Include="boost\multiprecision\traits\std_integer_traits.hpp" />
     <ClInclude Include="boost\multiprecision\traits\transcendental_reduction_type.hpp" />
+    <ClInclude Include="mpfr\mpfr.h" />
     <ClInclude Include="mpir\gmp.h" />
     <ClInclude Include="my_digits10.h" />
   </ItemGroup>
@@ -105,9 +106,18 @@
     <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp" />
     <ClCompile Include="standalone_bernoulli_tgamma_cpp_dec_float.cpp" />
     <ClCompile Include="standalone_bernoulli_tgamma_gmp_float.cpp" />
+    <ClCompile Include="standalone_bernoulli_tgamma_mpfr_float.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="mpfr\mpfr_core2_lib_release.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Test_GCC|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="mpfr\mpfr_gc_lib_debug.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Test_GCC|x64'">true</ExcludedFromBuild>
+    </Library>
     <Library Include="mpir\mpir_core2_lib_release.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </Library>
@@ -168,10 +178,10 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir;$(SolutionDir)mpfr;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);C:\boost\modular_boost\boost\libs\config\include;$(SolutionDir)mpir;$(SolutionDir)mpfr;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test_GCC|x64'">
     <NMakeBuildCommandLine>D:\MinGW_nuwen\MinGW\bin\g++ -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -O3 -std=c++11 -IC:\boost\modular_boost\boost\libs\multiprecision\include -IC:\boost\modular_boost\boost\libs\config\include test.cpp -o test.exe</NMakeBuildCommandLine>
