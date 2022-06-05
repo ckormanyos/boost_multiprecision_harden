@@ -821,7 +821,7 @@ struct mpfr_float_imp<digits10, allocate_stack>
       }
       else
       {
-         char* ps = mpfr_get_str(0, &e, 10, static_cast<std::size_t>(digits), m_data, GMP_RNDN);
+         char* ps = mpfr_get_str(nullptr, &e, 10, static_cast<std::size_t>(digits), m_data, GMP_RNDN);
          --e; // To match with what our formatter expects.
          if (fixed && e != -1)
          {
@@ -832,7 +832,7 @@ struct mpfr_float_imp<digits10, allocate_stack>
             {
                // We need to get *all* the digits and then possibly round up,
                // we end up with either "0" or "1" as the result.
-               ps = mpfr_get_str(0, &e, 10, 0, m_data, GMP_RNDN);
+               ps = mpfr_get_str(nullptr, &e, 10, 0, m_data, GMP_RNDN);
                --e;
                unsigned offset = *ps == '-' ? 1 : 0;
                if (ps[offset] > '5')
@@ -873,12 +873,12 @@ struct mpfr_float_imp<digits10, allocate_stack>
             }
             else if (digits > 0)
             {
-               ps = mpfr_get_str(0, &e, 10, static_cast<std::size_t>(digits), m_data, GMP_RNDN);
+               ps = mpfr_get_str(nullptr, &e, 10, static_cast<std::size_t>(digits), m_data, GMP_RNDN);
                --e; // To match with what our formatter expects.
             }
             else
             {
-               ps = mpfr_get_str(0, &e, 10, 1, m_data, GMP_RNDN);
+               ps = mpfr_get_str(nullptr, &e, 10, 1, m_data, GMP_RNDN);
                --e;
                unsigned offset = *ps == '-' ? 1 : 0;
                ps[offset]      = '0';
@@ -1095,12 +1095,12 @@ struct mpfr_float_backend<0, allocate_dynamic> : public detail::mpfr_float_imp<0
 {
    mpfr_float_backend() : detail::mpfr_float_imp<0, allocate_dynamic>() {}
    mpfr_float_backend(const mpfr_t val)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? (unsigned)mpfr_get_prec(val) : boost::multiprecision::detail::digits10_2_2(get_default_precision()))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? static_cast<unsigned>(mpfr_get_prec(val)) : static_cast<unsigned>(boost::multiprecision::detail::digits10_2_2(get_default_precision())))
    {
       mpfr_set(this->m_data, val, GMP_RNDN);
    }
    mpfr_float_backend(const mpf_t val)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? (unsigned)mpf_get_prec(val) : boost::multiprecision::detail::digits10_2_2(get_default_precision()))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? static_cast<unsigned>(mpf_get_prec(val)) : static_cast<unsigned>(boost::multiprecision::detail::digits10_2_2(get_default_precision())))
    {
       mpfr_set_f(this->m_data, val, GMP_RNDN);
    }
@@ -1120,13 +1120,13 @@ struct mpfr_float_backend<0, allocate_dynamic> : public detail::mpfr_float_imp<0
    {}
    template <class V>
    mpfr_float_backend(const V& o, unsigned digits10)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(multiprecision::detail::digits10_2_2(digits10))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(static_cast<unsigned>(multiprecision::detail::digits10_2_2(digits10)))
    {
       *this = o;
    }
 #ifndef BOOST_NO_CXX17_HDR_STRING_VIEW
    mpfr_float_backend(const std::string_view& o, unsigned digits10)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(multiprecision::detail::digits10_2_2(digits10))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(static_cast<unsigned>(multiprecision::detail::digits10_2_2(digits10)))
    {
       std::string s(o);
       *this = s.c_str();
@@ -1134,35 +1134,35 @@ struct mpfr_float_backend<0, allocate_dynamic> : public detail::mpfr_float_imp<0
 #endif
    template <unsigned D>
    mpfr_float_backend(const gmp_float<D>& val, unsigned digits10)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(multiprecision::detail::digits10_2_2(digits10))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(static_cast<unsigned>(multiprecision::detail::digits10_2_2(digits10)))
    {
       mpfr_set_f(this->m_data, val.data(), GMP_RNDN);
    }
    template <unsigned D>
    mpfr_float_backend(const mpfr_float_backend<D>& val, unsigned digits10)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(multiprecision::detail::digits10_2_2(digits10))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(static_cast<unsigned>(multiprecision::detail::digits10_2_2(digits10)))
    {
       mpfr_set(this->m_data, val.data(), GMP_RNDN);
    }
    template <unsigned D>
    mpfr_float_backend(const mpfr_float_backend<D>& val)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_related_precision() ? (unsigned)mpfr_get_prec(val.data()) : boost::multiprecision::detail::digits10_2_2(get_default_precision()))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_related_precision() ? static_cast<unsigned>(mpfr_get_prec(val.data())) : static_cast<unsigned>(boost::multiprecision::detail::digits10_2_2(get_default_precision())))
    {
       mpfr_set(this->m_data, val.data(), GMP_RNDN);
    }
    template <unsigned D>
    mpfr_float_backend(const gmp_float<D>& val)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? (unsigned)mpf_get_prec(val.data()) : boost::multiprecision::detail::digits10_2_2(get_default_precision()))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? static_cast<unsigned>(mpf_get_prec(val.data())) : static_cast<unsigned>(boost::multiprecision::detail::digits10_2_2(get_default_precision())))
    {
       mpfr_set_f(this->m_data, val.data(), GMP_RNDN);
    }
    mpfr_float_backend(const gmp_int& val)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? static_cast<unsigned>(used_gmp_int_bits(val)) : boost::multiprecision::detail::digits10_2_2(thread_default_precision()))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? static_cast<unsigned>(used_gmp_int_bits(val)) : static_cast<unsigned>(boost::multiprecision::detail::digits10_2_2(thread_default_precision())))
    {
       mpfr_set_z(this->m_data, val.data(), GMP_RNDN);
    }
    mpfr_float_backend(const gmp_rational& val)
-       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? static_cast<unsigned>(used_gmp_rational_bits(val)) : boost::multiprecision::detail::digits10_2_2(thread_default_precision()))
+       : detail::mpfr_float_imp<0, allocate_dynamic>(preserve_all_precision() ? static_cast<unsigned>(used_gmp_rational_bits(val)) : static_cast<unsigned>(boost::multiprecision::detail::digits10_2_2(thread_default_precision())))
    {
       mpfr_set_q(this->m_data, val.data(), GMP_RNDN);
    }
