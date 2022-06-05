@@ -1440,7 +1440,7 @@ template <unsigned digits10, mpfr_allocation_type AllocationType>
 inline void eval_subtract(mpfr_float_backend<digits10, AllocationType>& result, long i)
 {
    if (i > 0)
-      mpfr_sub_ui(result.data(), result.data(), i, GMP_RNDN);
+      mpfr_sub_ui(result.data(), result.data(), static_cast<std::make_unsigned_t<long>>(i), GMP_RNDN);
    else
       mpfr_add_ui(result.data(), result.data(), boost::multiprecision::detail::unsigned_abs(i), GMP_RNDN);
 }
@@ -1511,7 +1511,7 @@ inline void eval_subtract(mpfr_float_backend<D1, A1>& a, const mpfr_float_backen
    if (y < 0)
       mpfr_add_ui(a.data(), x.data(), boost::multiprecision::detail::unsigned_abs(y), GMP_RNDN);
    else
-      mpfr_sub_ui(a.data(), x.data(), y, GMP_RNDN);
+      mpfr_sub_ui(a.data(), x.data(), static_cast<std::make_unsigned_t<long>>(y), GMP_RNDN);
 }
 template <unsigned D1, unsigned D2, mpfr_allocation_type A1, mpfr_allocation_type A2>
 inline void eval_subtract(mpfr_float_backend<D1, A1>& a, unsigned long x, const mpfr_float_backend<D2, A2>& y)
@@ -2051,7 +2051,7 @@ inline T min_value();
 
 inline void set_output_precision(const boost::multiprecision::mpfr_float& val, std::ostream& os)
 {
-   os << std::setprecision(val.precision());
+   os << std::setprecision(static_cast<std::streamsize>(val.precision()));
 }
 
 template <>
