@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 //  Copyright 2011 John Maddock. Distributed under the Boost
 //  Software License, Version 1.0. (See accompanying file
 //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -147,14 +147,14 @@ struct mpfr_float_imp<digits10, allocate_dynamic>
 
    mpfr_float_imp(const mpfr_float_imp& o)
    {
-      mpfr_init2(m_data, preserve_source_precision() ? mpfr_get_prec(o.data()) : boost::multiprecision::detail::digits10_2_2(get_default_precision()));
+      mpfr_init2(m_data, preserve_source_precision() ? mpfr_get_prec(o.data()) : static_cast<mpfr_prec_t>(boost::multiprecision::detail::digits10_2_2(get_default_precision())));
       if (o.m_data[0]._mpfr_d)
          mpfr_set(m_data, o.m_data, GMP_RNDN);
    }
    // rvalue copy
    mpfr_float_imp(mpfr_float_imp&& o) noexcept
    {
-      mpfr_prec_t binary_default_precision = boost::multiprecision::detail::digits10_2_2(get_default_precision());
+      mpfr_prec_t binary_default_precision = static_cast<mpfr_prec_t>(boost::multiprecision::detail::digits10_2_2(get_default_precision()));
       if ((this->get_default_options() != variable_precision_options::preserve_target_precision) || (mpfr_get_prec(o.data()) == binary_default_precision))
       {
          m_data[0] = o.m_data[0];
@@ -1314,11 +1314,11 @@ struct mpfr_float_backend<0, allocate_dynamic> : public detail::mpfr_float_imp<0
    }
    unsigned precision() const noexcept
    {
-      return static_cast<unsigned>(multiprecision::detail::digits2_2_10(mpfr_get_prec(this->m_data)));
+      return static_cast<unsigned>(multiprecision::detail::digits2_2_10(static_cast<unsigned long>(mpfr_get_prec(this->m_data))));
    }
    void precision(unsigned digits10) noexcept
    {
-      mpfr_prec_round(this->m_data, multiprecision::detail::digits10_2_2((digits10)), GMP_RNDN);
+      mpfr_prec_round(this->m_data, static_cast<mpfr_prec_t>(multiprecision::detail::digits10_2_2((digits10))), GMP_RNDN);
    }
    //
    // Variable precision options:
@@ -1755,7 +1755,7 @@ inline void eval_frexp(mpfr_float_backend<Digits10, AllocateType>& result, const
       return;
    }
    mp_exp_t v = mpfr_get_exp(val.data());
-   *e = v;
+   *e = static_cast<int>(v);
    if (v)
       eval_ldexp(result, val, -v);
    else
@@ -1936,7 +1936,7 @@ inline void eval_remquo(mpfr_float_backend<Digits10, AllocateType>& result, cons
    long l;
    mpfr_remquo(result.data(), &l, a.data(), b.data(), GMP_RNDN);
    if (pi)
-      *pi = l;
+      *pi = static_cast<int>(l);
 }
 
 template <unsigned Digits10, mpfr_allocation_type AllocateType>
@@ -2119,7 +2119,7 @@ inline int digits<boost::multiprecision::number<boost::multiprecision::debug_ada
     noexcept
 #endif
 {
-   return multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::debug_adaptor<boost::multiprecision::mpfr_float::backend_type> >::thread_default_precision());
+   return static_cast<int>(multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::debug_adaptor<boost::multiprecision::mpfr_float::backend_type> >::thread_default_precision()));
 }
 template <>
 inline int digits<boost::multiprecision::number<boost::multiprecision::debug_adaptor<boost::multiprecision::mpfr_float_backend<0> >, boost::multiprecision::et_off> >()
@@ -2127,7 +2127,7 @@ inline int digits<boost::multiprecision::number<boost::multiprecision::debug_ada
     noexcept
 #endif
 {
-   return multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::debug_adaptor<boost::multiprecision::mpfr_float::backend_type> >::thread_default_precision());
+   return static_cast<int>(multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::debug_adaptor<boost::multiprecision::mpfr_float::backend_type> >::thread_default_precision()));
 }
 
 template <>
@@ -2167,7 +2167,7 @@ inline int digits<boost::multiprecision::number<boost::multiprecision::backends:
     noexcept
 #endif
 {
-   return multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::backends::logged_adaptor<boost::multiprecision::mpfr_float::backend_type> >::default_precision());
+   return static_cast<int>(multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::backends::logged_adaptor<boost::multiprecision::mpfr_float::backend_type> >::default_precision()));
 }
 template <>
 inline int digits<boost::multiprecision::number<boost::multiprecision::backends::logged_adaptor<boost::multiprecision::mpfr_float_backend<0> >, boost::multiprecision::et_off> >()
@@ -2175,7 +2175,7 @@ inline int digits<boost::multiprecision::number<boost::multiprecision::backends:
     noexcept
 #endif
 {
-   return multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::backends::logged_adaptor<boost::multiprecision::mpfr_float::backend_type> >::default_precision());
+   return static_cast<int>(multiprecision::detail::digits10_2_2(boost::multiprecision::number<boost::multiprecision::backends::logged_adaptor<boost::multiprecision::mpfr_float::backend_type> >::default_precision()));
 }
 
 template <>
