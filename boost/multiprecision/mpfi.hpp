@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 //  Copyright 2011 John Maddock. Distributed under the Boost
 //  Software License, Version 1.0. (See accompanying file
 //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -333,7 +333,7 @@ struct mpfi_float_imp
          const char*                  p = ++s;
          while (*p && (*p != ',') && (*p != '}'))
             ++p;
-         part.assign(s + 1, p);
+         part.assign(s, p);
          a = part.c_str();
          s = p;
          if (*p && (*p != '}'))
