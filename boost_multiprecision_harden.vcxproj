@@ -43,6 +43,7 @@
     <ClInclude Include="boost\multiprecision\detail\assert.hpp" />
     <ClInclude Include="boost\multiprecision\detail\atomic.hpp" />
     <ClInclude Include="boost\multiprecision\detail\bitscan.hpp" />
+    <ClInclude Include="boost\multiprecision\detail\check_cpp11_config.hpp" />
     <ClInclude Include="boost\multiprecision\detail\constexpr.hpp" />
     <ClInclude Include="boost\multiprecision\detail\default_ops.hpp" />
     <ClInclude Include="boost\multiprecision\detail\digits.hpp" />

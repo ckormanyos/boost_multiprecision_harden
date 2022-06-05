@@ -1,12 +1,12 @@
-﻿////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 //  Copyright 2013 - 2022 John Maddock.
 //  Copyright 2022 Christopher Kormanyos.
 //  Distributed under the Boost Software License,
 //  Version 1.0. (See accompanying file LICENSE_1_0.txt
 //  or copy at https://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_MATH_CPP_BIN_FLOAT_HPP
-#define BOOST_MATH_CPP_BIN_FLOAT_HPP
+#ifndef BOOST_MP_CPP_BIN_FLOAT_HPP
+#define BOOST_MP_CPP_BIN_FLOAT_HPP
 
 #include <cmath>
 #include <cstdint>

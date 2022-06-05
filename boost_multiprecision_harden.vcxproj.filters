@@ -294,6 +294,9 @@
     <ClInclude Include="mpfr\mpfr.h">
       <Filter>Source Files\mpfr</Filter>
     </ClInclude>
+    <ClInclude Include="boost\multiprecision\detail\check_cpp11_config.hpp">
+      <Filter>Source Files\boost\multiprecision\detail</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="standalone_bernoulli_tgamma_cpp_bin_float.cpp">
