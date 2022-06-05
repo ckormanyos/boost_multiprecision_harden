@@ -2051,7 +2051,7 @@ inline T min_value();
 
 inline void set_output_precision(const boost::multiprecision::mpfr_float& val, std::ostream& os)
 {
-   os << std::setprecision(static_cast<std::streamsize>(val.precision()));
+   os << std::setprecision(static_cast<int>(val.precision()));
 }
 
 template <>
@@ -2076,7 +2076,7 @@ inline boost::multiprecision::mpfr_float
 max_value<boost::multiprecision::mpfr_float>()
 {
    boost::multiprecision::mpfr_float result(0.5);
-   mpfr_mul_2exp(result.backend().data(), result.backend().data(), mpfr_get_emax(), GMP_RNDN);
+   mpfr_mul_2exp(result.backend().data(), result.backend().data(), static_cast<std::make_unsigned_t<mpfr_exp_t>>(mpfr_get_emax()), GMP_RNDN);
    BOOST_MP_ASSERT(mpfr_number_p(result.backend().data()));
    return result;
 }
@@ -2086,7 +2086,7 @@ inline boost::multiprecision::mpfr_float
 min_value<boost::multiprecision::mpfr_float>()
 {
    boost::multiprecision::mpfr_float result(0.5);
-   mpfr_div_2exp(result.backend().data(), result.backend().data(), -mpfr_get_emin(), GMP_RNDN);
+   mpfr_div_2exp(result.backend().data(), result.backend().data(), static_cast<std::make_unsigned_t<mpfr_exp_t>>(-mpfr_get_emin()), GMP_RNDN);
    BOOST_MP_ASSERT(mpfr_number_p(result.backend().data()));
    return result;
 }
@@ -2096,7 +2096,7 @@ inline boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<0
 max_value<boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<0>, boost::multiprecision::et_off> >()
 {
    boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<0>, boost::multiprecision::et_off> result(0.5);
-   mpfr_mul_2exp(result.backend().data(), result.backend().data(), mpfr_get_emax(), GMP_RNDN);
+   mpfr_mul_2exp(result.backend().data(), result.backend().data(), static_cast<std::make_unsigned_t<mpfr_exp_t>>(mpfr_get_emax()), GMP_RNDN);
    BOOST_MP_ASSERT(mpfr_number_p(result.backend().data()));
    return result;
 }
@@ -2106,7 +2106,7 @@ inline boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<0
 min_value<boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<0>, boost::multiprecision::et_off> >()
 {
    boost::multiprecision::number<boost::multiprecision::mpfr_float_backend<0>, boost::multiprecision::et_off> result(0.5);
-   mpfr_div_2exp(result.backend().data(), result.backend().data(), -mpfr_get_emin(), GMP_RNDN);
+   mpfr_div_2exp(result.backend().data(), result.backend().data(), static_cast<std::make_unsigned_t<mpfr_exp_t>>(-mpfr_get_emin()), GMP_RNDN);
    BOOST_MP_ASSERT(mpfr_number_p(result.backend().data()));
    return result;
 }
@@ -3424,7 +3424,7 @@ class numeric_limits<boost::multiprecision::number<boost::multiprecision::mpfr_f
    static constexpr int digits   = static_cast<int>((Digits10 * 1000L) / 301L + ((Digits10 * 1000L) % 301 ? 2 : 1));
    static constexpr int digits10 = Digits10;
    // Is this really correct???
-   static constexpr int  max_digits10 = boost::multiprecision::detail::calc_max_digits10<digits>::value;
+   static constexpr int  max_digits10 = static_cast<int>(boost::multiprecision::detail::calc_max_digits10<digits>::value);
    static constexpr bool is_signed    = true;
    static constexpr bool is_integer   = false;
    static constexpr bool is_exact     = false;

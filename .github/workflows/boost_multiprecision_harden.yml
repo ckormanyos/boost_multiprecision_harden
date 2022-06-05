@@ -40,7 +40,7 @@ jobs:
         run: |
           echo "compile ./test.exe"
           ${{ matrix.compiler }} -v
-          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -std=${{ matrix.standard }} -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp standalone_bernoulli_tgamma_mpfr_float.cpp standalone_bernoulli_tgamma_gmp_float.cpp test.cpp -lgmp -lmpfr -o test.exe
+          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Werror -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -std=${{ matrix.standard }} -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp standalone_bernoulli_tgamma_mpfr_float.cpp standalone_bernoulli_tgamma_gmp_float.cpp test.cpp -lgmp -lmpfr -o test.exe
           ls -la ./test.exe
           echo "run ./test.exe"
           ./test.exe
@@ -74,7 +74,7 @@ jobs:
         run: |
           echo "compile ./test.exe"
           ${{ matrix.compiler }} -v
-          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -std=${{ matrix.standard }} -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp standalone_bernoulli_tgamma_mpfr_float.cpp standalone_bernoulli_tgamma_gmp_float.cpp test.cpp -lgmp -lmpfr -o test.exe
+          ${{ matrix.compiler }} -finline-functions -m64 -O3 -Werror -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -std=${{ matrix.standard }} -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp standalone_bernoulli_tgamma_mpfr_float.cpp standalone_bernoulli_tgamma_gmp_float.cpp test.cpp -lgmp -lmpfr -o test.exe
           ls -la ./test.exe
           echo "run ./test.exe"
           ./test.exe
@@ -106,5 +106,5 @@ jobs:
         run: |
           echo "compile ./test.elf"
           ${{ matrix.compiler }} -v
-          ${{ matrix.compiler }} -std=${{ matrix.standard }} -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -O2 -g -gdwarf-2 -fno-exceptions -ffunction-sections -fdata-sections -x c++ -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -fno-enforce-eh-specs -ftemplate-depth=128 -marm -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfpv2 -mfloat-abi=hard -ffast-math -DBOOST_NO_EXCEPTIONS -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp test.cpp -Wl,--gc-sections -Wl,-Map,./test.map --specs=nano.specs --specs=nosys.specs -o ./test.elf
+          ${{ matrix.compiler }} -std=${{ matrix.standard }} -O2 -Werror -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wundef -Wunused-parameter -Wuninitialized -Wunreachable-code -Winit-self -Wzero-as-null-pointer-constant -g -gdwarf-2 -fno-exceptions -ffunction-sections -fdata-sections -x c++ -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -fno-enforce-eh-specs -ftemplate-depth=128 -marm -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfpv2 -mfloat-abi=hard -ffast-math -DBOOST_NO_EXCEPTIONS -I../boost-root -I. standalone_bernoulli_tgamma_cpp_bin_float.cpp standalone_bernoulli_tgamma_cpp_dec_float.cpp test.cpp -Wl,--gc-sections -Wl,-Map,./test.map --specs=nano.specs --specs=nosys.specs -o ./test.elf
           ls -la ./test.elf
