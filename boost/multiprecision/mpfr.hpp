@@ -3424,7 +3424,7 @@ class numeric_limits<boost::multiprecision::number<boost::multiprecision::mpfr_f
    static constexpr int digits   = static_cast<int>((Digits10 * 1000L) / 301L + ((Digits10 * 1000L) % 301 ? 2 : 1));
    static constexpr int digits10 = Digits10;
    // Is this really correct???
-   static constexpr int  max_digits10 = static_cast<int>(boost::multiprecision::detail::calc_max_digits10<digits>::value);
+   static constexpr int  max_digits10 = static_cast<int>(boost::multiprecision::detail::calc_max_digits10<static_cast<unsigned>(digits)>::value);
    static constexpr bool is_signed    = true;
    static constexpr bool is_integer   = false;
    static constexpr bool is_exact     = false;
